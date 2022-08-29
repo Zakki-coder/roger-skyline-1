@@ -26,4 +26,15 @@ Use ```ip route``` to get Gateway, ifconfig for others.
 If possible use ```sudo ifup enp0s3``` instead.
 
 ### SSH
+###### Change default port
+man 5 sshd_config
+```sudo vim /etc/ssh/sshd_config``` Change ```Port 22``` to ```Port 4242``` Run ```sudo service ssh restart``` and check that port has been changed with ```sudo service ssh status```
 
+###### Set publickey access
+If host has no RSA key create generate with ```ssh-keygen```
+If server has no authorized_keys file create one with ```touch ~/.ssh/authorized_keys```
+Append hosts rsa.pub key to servers ```~/.ssh/authorized_keys```
+
+Open ```/etc/ssh/sshd_config``` and edit
+```#PermitRootLogin prohibit-password``` to ```PermitRootLogin no```
+```#PasswordAuthentication``` to ```PasswordAuthentication yes```
