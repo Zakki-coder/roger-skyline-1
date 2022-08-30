@@ -30,6 +30,8 @@ If possible use ```sudo ifup enp0s3``` instead.
 man 5 sshd_config
 ```sudo vim /etc/ssh/sshd_config``` Change ```Port 22``` to ```Port 4242``` Run ```sudo service ssh restart``` and check that port has been changed with ```sudo service ssh status```
 
+###### NOTE TO SELF
+	I had to change nameserver from ```/etc/resolv.conf``` file to ```nameserver 8.8.8.8```(google) to get apt install working
 ###### Set publickey access
 If host has no RSA key create generate with ```ssh-keygen```
 If server has no authorized_keys file create one with ```touch ~/.ssh/authorized_keys```
@@ -41,3 +43,4 @@ Open ```sudo /etc/ssh/sshd_config``` and edit
 Restart service and check status with ```sudo service sshd restart``` and ```sudo service sshd status```
 I Had to add ssh-rsa prefix to servers authorized key (Took me a looooong time to debug) :D
 Test that only publickey is allowed, this should fail: ```ssh jniemine@192.168.0.5 -p 4242``` or ```ssh -p 4242 jniemine@192.168.0.5 -i /home/jakken/.ssh/id_rsa``` choose another for ready version # TODO REMEMBER TO CHANGE IP
+
