@@ -44,3 +44,8 @@ Restart service and check status with ```sudo service sshd restart``` and ```sud
 I Had to add ssh-rsa prefix to servers authorized key (Took me a looooong time to debug) :D
 Test that only publickey is allowed, this should fail: ```ssh jniemine@192.168.0.5 -p 4242``` or ```ssh -p 4242 jniemine@192.168.0.5 -i /home/jakken/.ssh/id_rsa``` choose another for ready version # TODO REMEMBER TO CHANGE IP
 
+### Setup ufw firewall
+Set default policies with ```sudo ufw default deny incoming``` and ```sudo ufw default allow outgoing```
+Open ports:
+```sudo ufw allow 4242``` For ssh.
+Enable firewall ```sudo ufw enable``` and check rules ```sudo ufw status verbose```
