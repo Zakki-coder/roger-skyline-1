@@ -70,3 +70,7 @@ bantime = 900
 logpath = %(sshd_log)s
 backend = %(sshd_backend)s
 ```
+
+### Protect from port scans
+https://www.digitalocean.com/community/tutorials/how-to-use-psad-to-detect-network-intrusion-attempts-on-an-ubuntu-vps
+```sudo apt install psad``` open ```sudo vim /etc/psad/psad.conf```, change ```HOSTNAME	debian;``` , ```ENABLE_AUTO_IDS         Y;```
