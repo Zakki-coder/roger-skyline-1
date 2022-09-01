@@ -45,7 +45,28 @@ I Had to add ssh-rsa prefix to servers authorized key (Took me a looooong time t
 Test that only publickey is allowed, this should fail: ```ssh jniemine@192.168.0.5 -p 4242``` or ```ssh -p 4242 jniemine@192.168.0.5 -i /home/jakken/.ssh/id_rsa``` choose another for ready version # TODO REMEMBER TO CHANGE IP
 
 ### Setup ufw firewall
+Linux has built in firewall called Netfilter which can be managed with ufw program.
 Set default policies with ```sudo ufw default deny incoming``` and ```sudo ufw default allow outgoing```
 Open ports:
-```sudo ufw allow 4242``` For ssh.
+```sudo ufw allow 4242``` For ssh. For bonuses also 80(https) and 443(https) should be opended 
 Enable firewall ```sudo ufw enable``` and check rules ```sudo ufw status verbose```
+
+###### Setup fail2ban`
+iptables is administration program for the Netfilter and fail2ban creates rulechains to iptables.
+Install with ```sudo apt install fail2ban```. Create local jail file ```touch /etc/fail2ban/jail.d/ssh.conf``` Open it and append
+You can check iptables rules with ```sudo iptables -L```
+```
+[sshd]
+#Aggressive might be too much, but seems to work :D Other options: normal, ddos, extra. Aggressive is them all. Filter regexes can be found from /etc/fail2ban/filter.d/sshd.conf
+#man jail.conf
+mode = aggressive
+enabled = true
+port = 4242
+filter = sshd
+maxretry = 3
+findtime = 600
+bantime = 900
+#Paths /etc/fail2ban/paths-*
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+```
