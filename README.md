@@ -74,3 +74,25 @@ backend = %(sshd_backend)s
 ### Protect from port scans
 https://www.digitalocean.com/community/tutorials/how-to-use-psad-to-detect-network-intrusion-attempts-on-an-ubuntu-vps
 ```sudo apt install psad``` open ```sudo vim /etc/psad/psad.conf```, change ```HOSTNAME	debian;``` , ```ENABLE_AUTO_IDS         Y;```
+
+### Stop services not needed
+```systemctl list-unit-files --type=service | grep -P '(enabled..*)'``` For listing and ```sudo systemctl disable <service>``` for disabling service
+I enabled the following:
+```
+cron.service
+fail2ban.service
+getty@.service
+networking.service
+rsyslog.service
+ssh.service
+systemd-fsck-root.service
+systemd-remount-fs.service
+systemd-timesyncd.service
+ufw.service
+```
+Aliases which are symlink to enabled service:
+```
+autovt@.service
+sshd.service
+syslog.service
+```
