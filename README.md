@@ -96,3 +96,31 @@ autovt@.service
 sshd.service
 syslog.service
 ```
+
+### Create update script
+Create ```sudo vim /etc/init.d/update_script.sh``` write the following:
+```
+#!/bin/bash
+sudo apt-get -y update >> /var/log/update_script.log
+sudo apt-get -y upgrade >> /var/log/update_script.log
+```
+Then give execute rights:
+```sudo chmod +x /etc/init.d/update_script.sh```
+Create crontab ```sudo vim /etc/cron.d/update_script``` Write:
+```0 4 * * 0 root /etc/init.d/update_script.sh
+@reboot root /etc/init.d/update_script.sh ```
+
+### Crontab monitoring script
+If emails are not going to root, check whois root from ```/etc/aliases```
+Create firts backup ```cat /etc/crontab > /etc/crontab.bak```
+Create script: ```/etc/init.d/crontab_monitor.sh``` Write the following lines:
+```#!/bin/bash
+
+diff /etc/crontab /etc/crontab.bak > /etc/crontab.diff
+DIFF=$?
+if [ $DIFF != 0 ]; then
+	cat /etc/crontab.diff | xargs | mail -s "Crontab has been modified" root
+fi
+cat /etc/crontab > /etc/crontab.bak
+Give execute rights ```sudo chmod +x /etc/init.d/crontab_monitor.sh```
+Create file ```touch /etc/cron.d/crontab_monitor``` Add rule ```@midnight root /etc/init.d/crontab_monitor.sh```
