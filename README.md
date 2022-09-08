@@ -124,3 +124,12 @@ fi
 cat /etc/crontab > /etc/crontab.bak
 Give execute rights ```sudo chmod +x /etc/init.d/crontab_monitor.sh```
 Create file ```touch /etc/cron.d/crontab_monitor``` Add rule ```@midnight root /etc/init.d/crontab_monitor.sh```
+
+### Web part
+https://www.makeuseof.com/tag/set-apache-web-server-3-easy-steps/
+https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-debian-10
+```sudo apt-get install apache2```
+```sudo ufw allow 80; sudo ufw allow 443``` 80 = HTTP 443 = HTTPS
+Create domain dir ```sudo mkdir /var/www/cool_site```
+```sudo chown -R $current_user:$current_user /var/www/cool_site
+sudo chmod -R 755 /var/www/cool_site```
