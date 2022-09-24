@@ -21,7 +21,7 @@ Append address, netmask and gateway. This is how it should look like:
 		netmask 255.255.255.0 # TODO: REMEMBER /30
 		gateway 192.168.0.1
 ```
-Use ```ip route``` to get Gateway, ifconfig for others.
+Use ```ip route``` to get Gateway, ifconfig for others. (If ifconfig is not found -> apt update, apt install net-tools)
 <sub>Deprecated: Then reboot network services with ```sudo service networking restart```. Check with ```ip a```. If enp0s3 is down use ```ip link set enp0s3 up```</sub>
 If possible use ```sudo ifup enp0s3``` instead.
 
