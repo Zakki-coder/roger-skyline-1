@@ -1,5 +1,6 @@
 # Problems
 ufw not enabled on startup
+Take your scripts out and redo this shit
 
 # roger-skyline-1
 ### VM Part
