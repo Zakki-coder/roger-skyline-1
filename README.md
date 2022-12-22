@@ -1,3 +1,6 @@
+# Problems
+ufw not enabled on startup
+
 # roger-skyline-1
 ### VM Part
 Install VirtualBox
