@@ -70,6 +70,9 @@ bantime = 900
 logpath = %(sshd_log)s
 backend = %(sshd_backend)s
 ```
+```
+sudo vim /etc/fail2ban/fail2ban.conf -> loglevel = DEBUG
+```
 
 ### Protect from port scans
 https://www.digitalocean.com/community/tutorials/how-to-use-psad-to-detect-network-intrusion-attempts-on-an-ubuntu-vps
