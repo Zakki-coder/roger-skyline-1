@@ -86,6 +86,8 @@ https://www.digitalocean.com/community/tutorials/how-to-use-psad-to-detect-netwo
 ```sudo apt install psad``` open ```sudo vim /etc/psad/psad.conf```, change ```HOSTNAME	debian;``` , ```ENABLE_AUTO_IDS         Y;```
 
 ### Stop services not needed
+To check all running processes: systemctl list-units --type=service --state=running
+Check processes that are enabled: sudo systemctl list-unit-files --type service | grep enabled
 ```systemctl list-unit-files --type=service | grep -P '(enabled..*)'``` For listing and ```sudo systemctl disable <service>``` for disabling service
 I enabled the following:
 ```
