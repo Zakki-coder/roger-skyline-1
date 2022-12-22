@@ -84,6 +84,7 @@ sudo vim /etc/fail2ban/fail2ban.conf -> loglevel = DEBUG
 ```
 
 ### Protect from port scans
+https://www.rapid7.com/blog/post/2017/06/24/how-to-install-and-use-psad-ids-on-ubuntu-linux/
 https://www.digitalocean.com/community/tutorials/how-to-use-psad-to-detect-network-intrusion-attempts-on-an-ubuntu-vps
 ```sudo apt install psad``` open ```sudo vim /etc/psad/psad.conf```, change ```HOSTNAME	debian;``` , ```ENABLE_AUTO_IDS         Y;```
 
