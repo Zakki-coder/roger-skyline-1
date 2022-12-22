@@ -32,6 +32,8 @@ man 5 sshd_config
 
 ###### NOTE TO SELF
 	I had to change nameserver from ```/etc/resolv.conf``` file to ```nameserver 8.8.8.8```(google) to get apt install working
+###### Try
+	To copy key: ssh-copy-id -i /Users/vkurkela/.ssh/id_rsa.pub valtteri@10.11.203.255 -p 50113
 ###### Set publickey access
 If host has no RSA key create generate with ```ssh-keygen```
 If server has no authorized_keys file create one with ```touch ~/.ssh/authorized_keys```
