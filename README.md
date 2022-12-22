@@ -71,6 +71,13 @@ logpath = %(sshd_log)s
 backend = %(sshd_backend)s
 ```
 ```
+Adde regex to /etc/fail2ban/filter.d/sshd.local with:
+
+[Definition]
+failregex = %(known/failregex)s
+            ^banner exchange: Connection from <ADDR><__on_port_opt>: invalid format
+```
+```
 sudo vim /etc/fail2ban/fail2ban.conf -> loglevel = DEBUG
 ```
 
