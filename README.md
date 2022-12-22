@@ -137,6 +137,19 @@ cat /etc/crontab > /etc/crontab.bak
 Give execute rights ```sudo chmod +x /etc/init.d/crontab_monitor.sh```
 Create file ```touch /etc/cron.d/crontab_monitor``` Add rule ```@midnight root /etc/init.d/crontab_monitor.sh```
 
+### Mail
+Install exim.
+Now open the configuration file /etc/exim4/conf.d/main/01_exim4-config_listmacrosdefs with an editor of your choice.
+Enable TLS
+MAIN_TLS_ENABLE = true
+Specify the path to the certificate.
+MAIN_TLS_CERTIFICATE = /etc/ssl.crt/example.com.crt
+Specify the path to the private key.
+MAIN_TLS_PRIVATEKEY = /etc/ssl.key/example.com.key
+Save and exit the editor.
+#### SSL KEYS
+https://afterlogic.com/docs/aurora-7/configuring-webmail/configuring-ssl
+
 ### Web part
 https://www.makeuseof.com/tag/set-apache-web-server-3-easy-steps/
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-debian-10
