@@ -58,6 +58,7 @@ Open ports:
 Enable firewall ```sudo ufw enable``` and check rules ```sudo ufw status verbose```
 
 ###### Setup fail2ban`
+https://www.the-art-of-web.com/system/fail2ban-filters/
 iptables is administration program for the Netfilter and fail2ban creates rulechains to iptables.
 Install with ```sudo apt install fail2ban```. Create local jail file ```touch /etc/fail2ban/jail.d/ssh.conf``` Open it and append
 You can check iptables rules with ```sudo iptables -L```
